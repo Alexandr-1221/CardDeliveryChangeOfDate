@@ -36,7 +36,7 @@ class DeliveryTest {
         $("[name=\"name\"]").setValue(validUser.getName());
         $("[name=\"phone\"]").setValue(validUser.getPhone());
         $("[class=\"checkbox__box\"]").click();
-        $("[class=\"button button_view_extra button_size_m button_theme_alfa-on-white\"]").click();
+        $(".button__text").click();
         if ($(withText("Доставка в выбранный город недоступна")).isDisplayed()){
             int i = validUser.getCity().length() - 2;
             while (i > 0){
@@ -48,7 +48,7 @@ class DeliveryTest {
         $("[data-test-id=\"success-notification\"] [class=\"notification__content\"]").shouldHave(exactText("Встреча успешно запланирована на " + firstMeetingDate));
         $("[placeholder=\"Дата встречи\"]").sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
         $("[placeholder=\"Дата встречи\"]").setValue(secondMeetingDate);
-        $("[class=\"button button_view_extra button_size_m button_theme_alfa-on-white\"]").click();
+        $(".button__text").click();
         $(withText("Необходимо подтверждение" )).shouldBe(Condition.visible, Duration.ofSeconds(15));
         $("[data-test-id=replan-notification] .button").click();
         $("[data-test-id=\"success-notification\"] [class=\"notification__content\"]").shouldHave(exactText("Встреча успешно запланирована на " + secondMeetingDate));
